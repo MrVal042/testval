@@ -9,6 +9,7 @@ import {Image, ScrollView, Text} from 'react-native';
 import heroImg from '../../assets/images/circleChart.png';
 import {NavigationInterface} from '../../../typings/screens';
 import {SafeAreaView, TouchableOpacity, View} from 'react-native';
+import ellipseBg from '../../assets/icons/EllipseBg.png';
 
 export default function Index(props: NavigationInterface) {
   return (
@@ -68,7 +69,9 @@ export default function Index(props: NavigationInterface) {
             </Text>
           </View>
           {outcome.map(list => (
-            <TouchableOpacity key={list.text} style={styles.outcomeItems}>
+            <TouchableOpacity
+              key={list.text}
+              style={[styles.outcomeItems, {height: convertPX(65)}]}>
               <View
                 style={{
                   flexDirection: 'row',
@@ -79,13 +82,11 @@ export default function Index(props: NavigationInterface) {
                 </View>
               </View>
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Text
-                  style={[
-                    styles.text,
-                    {color: '#4B4B4B', fontSize: convertPX(12)},
-                  ]}>
-                  {list.percentage}%
-                </Text>
+                <View style={styles.ellipseWrap}>
+                  <Image source={ellipseBg} style={styles.ellipseBg} />
+                  <Image source={list.icon} style={styles.ellipse} />
+                  <Text style={styles.ellipseText}>{list.percentage}%</Text>
+                </View>
                 <RenderIcon src="EvilIcons" name="chevron-right" />
               </View>
             </TouchableOpacity>
