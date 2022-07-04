@@ -24,12 +24,7 @@ export default function Index(props: NavigationInterface) {
           {icons.map(list => (
             <View
               key={list.text}
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginHorizontal: convertPX(18),
-                backgroundColor: '#ffffff',
-              }}>
+              style={styles.iconItem}>
               <TouchableOpacity>
                 <Image source={list.src} style={styles.icon} />
               </TouchableOpacity>

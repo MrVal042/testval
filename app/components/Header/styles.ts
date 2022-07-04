@@ -1,7 +1,6 @@
 import {convertPX, width} from '../../utils';
 import {COLORS} from '../../constants/theme';
 import {StyleSheet} from 'react-native';
-import {widthPercentageToDP as WP} from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
   root: {
@@ -21,7 +20,5 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Muslin',
     fontSize: convertPX(18),
-    lineHeight: convertPX(36),
-    letterSpacing: convertPX(2),
   },
 });
