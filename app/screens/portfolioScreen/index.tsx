@@ -34,22 +34,26 @@ export default function Index(props: NavigationInterface) {
           </View>
 
           <View style={styles.heroWrap}>
-            <Text style={[styles.heroText, {top: 0, right: convertPX(40)}]}>
+            <Text style={[styles.heroText, {top: 10, right: convertPX(50)}]}>
               International Company {'\n'} Stocks
             </Text>
-            <Text
-              style={[
-                styles.heroText,
-                {top: convertPX(65), left: convertPX(5)},
-              ]}>
+            <Text style={[styles.heroText, {top: convertPX(65), left: 0}]}>
               Medium Company {'\n'} stocks (IJH)
             </Text>
 
-            <Text style={[styles.heroText, {top: convertPX(80), right: 0}]}>
+            <Text
+              style={[
+                styles.heroText,
+                {top: convertPX(90), right: convertPX(-5)},
+              ]}>
               Small Company {'\n'} Stocks (IJR)
             </Text>
             <Image source={heroImg} style={styles.image} />
-            <Text style={[styles.heroText, {bottom: 0, left: convertPX(70)}]}>
+            <Text
+              style={[
+                styles.heroText,
+                {bottom: convertPX(10), left: convertPX(70)},
+              ]}>
               Large Company {'\n'}Stocks (VOO)
             </Text>
           </View>

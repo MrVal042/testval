@@ -34,11 +34,7 @@ export default function hero() {
           <Text style={styles.heroTitle}>$4,500.00</Text>
           <Text style={styles.heroText}>Total Balance</Text>
           <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              marginTop: '5%',
-            }}>
+            style={styles.heroBtnWrap}>
             <TouchableOpacity style={styles.heroBtn}>
               <Text style={styles.heroBtnText}>Add Money</Text>
             </TouchableOpacity>
