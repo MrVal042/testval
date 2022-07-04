@@ -22,22 +22,22 @@ export default StyleSheet.create({
   },
   dotWrap: {
     display: 'flex',
+    marginBottom: 0,
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
     marginVertical: convertPX(15),
-    marginBottom: 0,
   },
-
   dot: {
+    borderWidth: 1.2,
     width: convertPX(24),
     height: convertPX(24),
-    backgroundColor: COLORS.primary,
     borderColor: COLORS.blue,
-    borderWidth: 1.2,
     borderRadius: convertPX(20),
     marginHorizontal: convertPX(3),
+    backgroundColor: COLORS.primary,
   },
+
   heroWrap: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -71,8 +71,8 @@ export default StyleSheet.create({
   },
 
   recentWrap: {
+    marginBottom: convertPX(120),
     marginHorizontal: convertPX(20),
-    marginBottom: convertPX(150),
   },
   outcomeTitle: {
     width: '100%',
@@ -83,9 +83,9 @@ export default StyleSheet.create({
     lineHeight: convertPX(21),
     backgroundColor: '#FBFAFA',
     paddingTop: convertPX(15),
-    paddingHorizontal: convertPX(5),
     marginBottom: convertPX(3),
     letterSpacing: convertPX(0.9),
+    paddingHorizontal: convertPX(5),
   },
   outcomeSubTitle: {
     color: '#666666',
@@ -100,13 +100,13 @@ export default StyleSheet.create({
   outcomeItems: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
     width: convertPX(327),
     paddingHorizontal: '2%',
     backgroundColor: '#F7F7F7',
-    paddingVertical: convertPX(2),
     marginVertical: convertPX(5),
+    paddingVertical: convertPX(2),
+    justifyContent: 'space-between',
   },
   outcomeText: {
     width: '100%',
@@ -118,11 +118,27 @@ export default StyleSheet.create({
     lineHeight: convertPX(18),
     paddingHorizontal: convertPX(5),
   },
-
-  percentage: {
-    marginRight: 5,
-    width: convertPX(24),
-    height: convertPX(24),
+  ellipseWrap: {
+    width: convertPX(32),
+    height: convertPX(32),
+    justifyContent: 'center',
+  },
+  ellipseBg: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+  },
+  ellipse: {
+    right: 0,
+    bottom: 0,
+    position: 'absolute',
+  },
+  ellipseText: {
+    color: '#243B80',
+    fontWeight: '800',
+    alignSelf: 'center',
+    position: 'absolute',
+    fontSize: convertPX(8),
   },
   button: {
     alignItems: 'center',
@@ -131,7 +147,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     borderRadius: convertPX(6),
     marginTop: convertPX(30),
-    backgroundColor: 'lightgray',
+    backgroundColor: '#C2C7FF',
   },
   buttonText: {
     color: COLORS.black,

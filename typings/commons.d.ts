@@ -2,7 +2,7 @@
 
 type IICons = {src: ImageSourcePropType; text: string};
 
-type IOutcome = {text: string; percentage: number};
+type IOutcome = {text: string; percentage: number; icon: ImageSourcePropType};
 
 type IKnowledge = {
   icon: ImageSourcePropType;

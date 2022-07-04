@@ -3,13 +3,12 @@ import styles from './styles';
 import HeroSection from './heroComp';
 import {convertPX} from '../../utils';
 import Header from '../../components/Header';
-import { recents, knowledge} from '../../libs/data';
+import {recents, knowledge} from '../../libs/data';
 import {Image, ScrollView, Text} from 'react-native';
 import barChart from '../../assets/images/barChart.png';
 import checkedIcon from '../../assets/icons/checkedIcon.png';
 import {NavigationInterface} from '../../../typings/screens';
 import {SafeAreaView, TouchableOpacity, View} from 'react-native';
-
 
 export default function Index(props: NavigationInterface) {
   return (
@@ -80,7 +79,7 @@ export default function Index(props: NavigationInterface) {
           style={[
             styles.recentWrap,
             {
-              marginBottom: convertPX(200),
+              marginBottom: convertPX(120),
             },
           ]}>
           <Text style={styles.recentTitle}>Grow your Knowledge</Text>

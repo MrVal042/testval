@@ -1,5 +1,7 @@
 import lockIcon from '../../assets/icons/lockIcon.png';
 import userIcon from '../../assets/icons/userIcon.png';
+import ellipse1 from '../../assets/icons/Ellipse1.png';
+import ellipse2 from '../../assets/icons/Ellipse2.png';
 import usersIcon from '../../assets/icons/usersIcon.png';
 import cameraVIcon from '../../assets/icons/cameraVIcon.png';
 import refreshIcon from '../../assets/icons/refreshIcon.png';
@@ -38,11 +40,12 @@ export const knowledge: Array<IKnowledge> = [
 ];
 
 export const outcome: Array<IOutcome> = [
-  {text: 'Large Company Stocks(VOO)', percentage: 55},
-  {percentage: 10, text: 'Medium Company Stocks (IJH)'},
-  {percentage: 5, text: 'Small Company Stocks(IJR)'},
+  {text: 'Large Company Stocks(VOO)', percentage: 55, icon: ellipse1},
+  {percentage: 10, text: 'Medium Company Stocks (IJH)', icon: ellipse2},
+  {percentage: 5, text: 'Small Company Stocks(IJR)', icon: ellipse2},
   {
     percentage: 5,
     text: 'International Company Stocks (IXUS) ',
+    icon: ellipse1,
   },
 ];
