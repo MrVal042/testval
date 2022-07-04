@@ -13,13 +13,15 @@ import ellipseBg from '../../assets/icons/EllipseBg.png';
 
 export default function Index(props: NavigationInterface) {
   return (
-    <SafeAreaView style={styles.root}>
+    <SafeAreaView>
       <Header
         {...props}
         leftIcon={{name: 'chevron-back'}}
         rightIcon={{name: 'question', src: 'EvilIcons', size: 30}}
       />
-      <ScrollView>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        contentContainerStyle={styles.root}>
         <View>
           <Text style={styles.subtitle}>Aggressive Portfolio</Text>
 
@@ -32,46 +34,36 @@ export default function Index(props: NavigationInterface) {
           </View>
 
           <View style={styles.heroWrap}>
-            <View style={{flexDirection: 'row'}}>
-              <Text style={[styles.heroText, {top: 85, left: -15}]}>
-                Medium Company {'\n'} stocks (IJH)
-              </Text>
-              <Text style={[styles.heroText, {top: 25, left: 60}]}>
-                International Company {'\n'} Stocks
-              </Text>
-              <Text style={[styles.heroText, {top: 105, left: 20}]}>
-                Small Company ){'\n'} Stocks (IJR)
-              </Text>
-            </View>
+            <Text style={[styles.heroText, {top: 0, right: convertPX(40)}]}>
+              International Company {'\n'} Stocks
+            </Text>
+            <Text
+              style={[
+                styles.heroText,
+                {top: convertPX(65), left: convertPX(5)},
+              ]}>
+              Medium Company {'\n'} stocks (IJH)
+            </Text>
+
+            <Text style={[styles.heroText, {top: convertPX(80), right: 0}]}>
+              Small Company {'\n'} Stocks (IJR)
+            </Text>
+            <Image source={heroImg} style={styles.image} />
+            <Text style={[styles.heroText, {bottom: 0, left: convertPX(70)}]}>
+              Large Company {'\n'}Stocks (VOO)
+            </Text>
           </View>
-
-          <Image source={heroImg} style={styles.image} />
-
-          <Text
-            style={[
-              styles.heroText,
-              {top: -20, right: 40, textAlign: 'center'},
-            ]}>
-            Large Company {'\n'}Stocks (VOO)
-          </Text>
         </View>
 
-        <View style={styles.recentWrap}>
-          <View
-            style={{
-              backgroundColor: '#FBFAFA',
-              width: '70%',
-              marginBottom: convertPX(5),
-            }}>
+        <View style={styles.outcomeWrap}>
+          <View style={styles.outcomeTitleWrap}>
             <Text style={styles.outcomeTitle}>Prospective Outcome</Text>
             <Text style={styles.outcomeSubTitle}>
               Risk:6 {'\n'}Returns 10-15%
             </Text>
           </View>
           {outcome.map(list => (
-            <TouchableOpacity
-              key={list.text}
-              style={[styles.outcomeItems, {height: convertPX(65)}]}>
+            <TouchableOpacity key={list.text} style={styles.outcomeItems}>
               <View
                 style={{
                   flexDirection: 'row',

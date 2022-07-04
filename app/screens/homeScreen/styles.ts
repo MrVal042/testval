@@ -1,19 +1,19 @@
 import {StyleSheet} from 'react-native';
-import {convertPX, height} from '../../utils';
+import {convertPX, height, width} from '../../utils';
 import {COLORS} from '../../constants/theme';
 
 export default StyleSheet.create({
   root: {
-    height: height,
+    width: width,
+    minHeight: height,
     alignItems: 'center',
+    backgroundColor: COLORS.primary,
   },
 
   image: {
-    marginTop: 45,
     width: convertPX(238),
     height: convertPX(238),
-    marginVertical: convertPX(10),
-    marginHorizontal: convertPX(45),
+    marginTop: convertPX(30),
   },
   title: {
     color: '#000',
@@ -21,9 +21,10 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Muslin',
     height: convertPX(72),
+    width: convertPX(286),
     fontSize: convertPX(24),
     lineHeight: convertPX(36),
-    letterSpacing: convertPX(2),
+    letterSpacing: convertPX(1.2),
   },
   text: {
     color: '#000',
@@ -34,16 +35,14 @@ export default StyleSheet.create({
     height: convertPX(41),
     fontSize: convertPX(14),
     lineHeight: convertPX(21),
-    marginVertical: convertPX(10),
-    letterSpacing: convertPX(0.9),
-    marginHorizontal: convertPX(20),
+    marginVertical: convertPX(6),
   },
   dotWrap: {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
-    marginVertical: convertPX(10),
+    marginVertical: convertPX(15),
   },
 
   dot: {
@@ -51,7 +50,7 @@ export default StyleSheet.create({
     height: convertPX(5),
     backgroundColor: 'gray',
     borderRadius: convertPX(20),
-    marginHorizontal: convertPX(2),
+    marginHorizontal: convertPX(3),
   },
   button: {
     alignItems: 'center',

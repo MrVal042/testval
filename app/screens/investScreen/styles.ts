@@ -1,21 +1,50 @@
 import {StyleSheet} from 'react-native';
 import {COLORS} from '../../constants/theme';
-import {convertPX, height} from '../../utils';
+import {convertPX, height, width} from '../../utils';
+
+const topSize = 60;
 
 export default StyleSheet.create({
   root: {
+    width: width,
     minHeight: height,
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: COLORS.primary,
   },
 
-  hero: {
+  subtitle: {
+    color: '#4B4B4B',
+    fontWeight: '500',
+    textAlign: 'center',
+    fontFamily: 'Muslin',
+    width: convertPX(221),
+    height: convertPX(30),
+    fontSize: convertPX(20),
+    lineHeight: convertPX(30),
+    marginVertical: convertPX(5),
+  },
+
+  heroWrap: {
     marginTop: 5,
+    alignItems: 'center',
     width: convertPX(326),
     height: convertPX(173),
     borderRadius: convertPX(5),
     backgroundColor: COLORS.purple,
     marginVertical: convertPX(10),
+  },
+  heroBIcon: {
+    opacity: 0.9,
+    position: 'absolute',
+    width: convertPX(topSize),
+    height: convertPX(topSize),
+    backgroundColor: '#B274E2',
+  },
+  heroIIcon: {
+    position: 'absolute',
+    width: convertPX(topSize - 20),
+    height: convertPX(topSize - 20),
+    backgroundColor: COLORS.purple,
   },
 
   heroTitle: {
@@ -23,7 +52,9 @@ export default StyleSheet.create({
     color: '#FFFFFF',
     fontWeight: '500',
     textAlign: 'center',
+    alignSelf: 'center',
     fontFamily: 'Muslin',
+    width: convertPX(204),
     height: convertPX(50),
     fontSize: convertPX(40),
     lineHeight: convertPX(50),
@@ -33,7 +64,9 @@ export default StyleSheet.create({
     marginTop: '1%',
     color: '#FFFFFF',
     textAlign: 'center',
+    alignSelf: 'center',
     fontFamily: 'Muslin',
+    width: convertPX(101),
     fontSize: convertPX(16),
     lineHeight: convertPX(20),
     letterSpacing: convertPX(1),
@@ -53,56 +86,23 @@ export default StyleSheet.create({
     fontSize: convertPX(12),
     letterSpacing: convertPX(1),
   },
-  subtitle: {
-    color: '#4B4B4B',
-    fontWeight: '500',
-    textAlign: 'center',
-    fontFamily: 'Muslin',
-    height: convertPX(30),
-    fontSize: convertPX(20),
-    lineHeight: convertPX(30),
-    marginVertical: convertPX(5),
-    letterSpacing: convertPX(2),
-  },
-  text: {
-    color: '#000',
-    fontWeight: '400',
-    textAlign: 'center',
-    fontFamily: 'Muslin',
-    height: convertPX(18),
-    fontSize: convertPX(14),
-    lineHeight: convertPX(17.57),
-    marginVertical: convertPX(18),
-    letterSpacing: convertPX(0.9),
-    marginHorizontal: convertPX(20),
-  },
-  fadingContainer: {
-    padding: 20,
-    backgroundColor: 'powderblue',
-  },
-  fadingText: {
-    fontSize: 28,
-  },
-  buttonRow: {
-    flexBasis: 100,
-    justifyContent: 'space-evenly',
-    marginVertical: 16,
-  },
+
   dotWrap: {
     display: 'flex',
+    alignSelf: 'center',
     alignItems: 'center',
     flexDirection: 'row',
+    width: convertPX(56),
     justifyContent: 'center',
     marginVertical: convertPX(10),
   },
-
   dot: {
+    borderWidth: 1,
     width: convertPX(8),
     height: convertPX(8),
-    backgroundColor: COLORS.purple,
     borderColor: COLORS.purple,
-    borderWidth: 1,
     borderRadius: convertPX(20),
+    backgroundColor: COLORS.purple,
     marginHorizontal: convertPX(3),
   },
   iconWrap: {
@@ -122,34 +122,80 @@ export default StyleSheet.create({
     fontFamily: 'Muslin',
     height: convertPX(17),
     fontSize: convertPX(12),
-    lineHeight: convertPX(15.06),
+    maxWidth: convertPX(109),
+    lineHeight: convertPX(15),
     marginVertical: convertPX(10),
+  },
+
+  optionWrap: {
+    width: convertPX(327),
+    height: convertPX(270),
+    backgroundColor: '#F4F4F4',
+    borderRadius: convertPX(6),
+    marginVertical: convertPX(10),
+  },
+  optionItem: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: convertPX(1),
+    justifyContent: 'space-between',
+    paddingHorizontal: convertPX(10),
+  },
+  optionText: {
+    color: '#000',
+    fontWeight: '600',
+    fontFamily: 'Muslin',
+    height: convertPX(18),
+    fontSize: convertPX(14),
+    lineHeight: convertPX(18),
+    marginVertical: convertPX(18),
     letterSpacing: convertPX(0.9),
   },
-  options: {
-    backgroundColor: '#F4F4F4',
-    height: convertPX(270),
-    borderRadius: convertPX(6),
-    width: convertPX(327),
-    marginVertical: convertPX(10),
+
+  optionIconWrap: {flexDirection: 'row', alignItems: 'center'},
+
+  optionIconText: {
+    color: '#7F18D0',
+    fontWeight: '600',
+    fontFamily: 'Muslin',
+    height: convertPX(18),
+    fontSize: convertPX(14),
+    lineHeight: convertPX(18),
+    marginVertical: convertPX(18),
+    letterSpacing: convertPX(0.9),
   },
+
   recentWrap: {
     width: convertPX(327),
+    paddingHorizontal: convertPX(2),
     marginVertical: convertPX(35),
   },
   recentTitle: {
-    width: '100%',
     color: '#4B4B4B',
     fontWeight: '700',
     fontFamily: 'Muslin',
     fontSize: convertPX(16),
     lineHeight: convertPX(20),
     backgroundColor: '#FBFAFA',
+    letterSpacing: convertPX(0.9),
     paddingVertical: convertPX(15),
     paddingHorizontal: convertPX(5),
   },
+  recentItem: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: convertPX(65),
+    paddingHorizontal: '2%',
+    justifyContent: 'space-between',
+  },
+  recentIcon: {
+    marginRight: 5,
+    width: convertPX(24),
+    height: convertPX(24),
+  },
   recentText: {
-    width: '100%',
     color: '#4B4B4B',
     fontWeight: '600',
     fontFamily: 'Muslin',
@@ -159,7 +205,6 @@ export default StyleSheet.create({
     paddingHorizontal: convertPX(5),
   },
   recentSubText: {
-    // width: '100%',
     color: '#4B4B4B',
     fontWeight: '400',
     fontFamily: 'Muslin',
@@ -168,46 +213,63 @@ export default StyleSheet.create({
     paddingVertical: convertPX(2),
     paddingHorizontal: convertPX(5),
   },
-  checked: {
-    marginRight: 5,
-    width: convertPX(24),
-    height: convertPX(24),
+  recentAmount: {
+    color: '#4B4B4B',
+    fontWeight: '400',
+    textAlign: 'center',
+    fontFamily: 'Muslin',
+    height: convertPX(15),
+    fontSize: convertPX(15),
+    lineHeight: convertPX(15),
+    marginVertical: convertPX(18),
+    letterSpacing: convertPX(0.9),
   },
-  button: {
+  recentBtn: {
     alignItems: 'center',
-    width: convertPX(327),
     height: convertPX(50),
     color: COLORS.primary,
     justifyContent: 'center',
+    marginTop: convertPX(12),
     borderRadius: convertPX(6),
-    marginTop: convertPX(8),
     backgroundColor: COLORS.purple,
   },
-  buttonText: {
+  recentBtnText: {
     color: COLORS.primary,
     fontSize: convertPX(16),
   },
-  projection: {
+
+  projectionWrap: {
+    width: convertPX(327),
     height: convertPX(471),
-    marginVertical: convertPX(25),
     backgroundColor: '#EDEEF7',
+    marginVertical: convertPX(25),
   },
   projectionTitle: {
-    width: '100%',
     color: '#4B4B4B',
     textAlign: 'center',
     fontFamily: 'Muslin',
     fontSize: convertPX(18),
+    marginTop: convertPX(15),
     lineHeight: convertPX(29),
+    letterSpacing: convertPX(0.9),
     paddingVertical: convertPX(15),
     paddingHorizontal: convertPX(5),
-    marginTop: convertPX(15),
-    letterSpacing: convertPX(1),
   },
   barchat: {
-    marginTop: convertPX(110),
-    marginBottom: 0,
     width: convertPX(320),
     height: convertPX(197),
+    marginTop: convertPX(110),
+  },
+  text: {
+    color: '#000',
+    fontWeight: '400',
+    textAlign: 'center',
+    fontFamily: 'Muslin',
+    height: convertPX(18),
+    fontSize: convertPX(14),
+    lineHeight: convertPX(17.57),
+    marginVertical: convertPX(18),
+    letterSpacing: convertPX(0.9),
+    marginHorizontal: convertPX(20),
   },
 });

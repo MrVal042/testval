@@ -1,30 +1,35 @@
 import {StyleSheet} from 'react-native';
 import {COLORS} from '../../constants/theme';
-import {convertPX, height} from '../../utils';
+import {convertPX, height, width} from '../../utils';
 
 export default StyleSheet.create({
   root: {
+    width: width,
     minHeight: height,
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: COLORS.primary,
   },
 
   subtitle: {
     color: '#080D45',
     fontWeight: '700',
     textAlign: 'center',
+    alignSelf: 'center',
     fontFamily: 'Muslin',
+    width: convertPX(227),
     height: convertPX(36),
     fontSize: convertPX(24),
     lineHeight: convertPX(36),
     marginVertical: convertPX(5),
-    letterSpacing: convertPX(2),
+    letterSpacing: convertPX(0.9),
   },
   dotWrap: {
     display: 'flex',
     marginBottom: 0,
+    alignSelf: 'center',
     alignItems: 'center',
     flexDirection: 'row',
+    width: convertPX(152),
     justifyContent: 'center',
     marginVertical: convertPX(15),
   },
@@ -39,50 +44,61 @@ export default StyleSheet.create({
   },
 
   heroWrap: {
+    alignSelf: 'center',
     alignItems: 'center',
+    width: convertPX(327),
+    marginVertical: convertPX(35),
     justifyContent: 'center',
   },
   heroText: {
     color: '#080D45',
     fontFamily: 'Muslin',
-    position: 'relative',
+    position: 'absolute',
     fontSize: convertPX(10),
     lineHeight: convertPX(21),
-    marginVertical: convertPX(18),
     letterSpacing: convertPX(0.9),
   },
   image: {
+    alignSelf: 'center',
+    position: 'relative',
     width: convertPX(180),
     height: convertPX(180),
-    marginHorizontal: '25%',
+    marginVertical: convertPX(40),
   },
 
-  text: {
-    color: '#000',
-    fontWeight: '400',
-    textAlign: 'center',
-    fontFamily: 'Muslin',
-    height: convertPX(18),
-    fontSize: convertPX(14),
-    lineHeight: convertPX(17.57),
-    marginVertical: convertPX(18),
-    letterSpacing: convertPX(0.9),
-    marginHorizontal: convertPX(20),
-  },
+  // text: {
+  //   color: '#000',
+  //   fontWeight: '400',
+  //   textAlign: 'center',
+  //   fontFamily: 'Muslin',
+  //   height: convertPX(18),
+  //   fontSize: convertPX(14),
+  //   lineHeight: convertPX(17.57),
+  //   marginVertical: convertPX(18),
+  //   letterSpacing: convertPX(0.9),
+  //   marginHorizontal: convertPX(20),
+  // },
 
-  recentWrap: {
+  outcomeWrap: {
+    width: convertPX(327),
     marginBottom: convertPX(120),
     marginHorizontal: convertPX(20),
   },
+  outcomeTitleWrap: {
+    width: convertPX(174),
+    backgroundColor: '#FBFAFA',
+    marginBottom: convertPX(5),
+    borderRadius: convertPX(6),
+    paddingVertical: convertPX(15),
+    paddingHorizontal: convertPX(5),
+  },
   outcomeTitle: {
-    width: '100%',
     color: '#4B4B4B',
     fontWeight: '700',
     fontFamily: 'Muslin',
     fontSize: convertPX(14),
     lineHeight: convertPX(21),
     backgroundColor: '#FBFAFA',
-    paddingTop: convertPX(15),
     marginBottom: convertPX(3),
     letterSpacing: convertPX(0.9),
     paddingHorizontal: convertPX(5),
@@ -102,14 +118,15 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     width: convertPX(327),
-    paddingHorizontal: '2%',
+    height: convertPX(65),
+    borderRadius: convertPX(6),
     backgroundColor: '#F7F7F7',
     marginVertical: convertPX(5),
     paddingVertical: convertPX(2),
     justifyContent: 'space-between',
+    paddingHorizontal: convertPX(5),
   },
   outcomeText: {
-    width: '100%',
     color: '#080D45',
     fontWeight: '600',
     fontFamily: 'Muslin',
@@ -124,8 +141,6 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   ellipseBg: {
-    width: '100%',
-    height: '100%',
     position: 'absolute',
   },
   ellipse: {
@@ -145,8 +160,8 @@ export default StyleSheet.create({
     width: convertPX(327),
     height: convertPX(50),
     justifyContent: 'center',
+    marginTop: convertPX(15),
     borderRadius: convertPX(6),
-    marginTop: convertPX(30),
     backgroundColor: '#C2C7FF',
   },
   buttonText: {

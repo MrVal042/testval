@@ -3,60 +3,86 @@ import styles from './styles';
 import HeroSection from './heroComp';
 import {convertPX} from '../../utils';
 import Header from '../../components/Header';
-import {recents, knowledge} from '../../libs/data';
 import {Image, ScrollView, Text} from 'react-native';
+import RenderIcon from '../../components/RenderIcon';
 import barChart from '../../assets/images/barChart.png';
 import checkedIcon from '../../assets/icons/checkedIcon.png';
 import {NavigationInterface} from '../../../typings/screens';
 import {SafeAreaView, TouchableOpacity, View} from 'react-native';
+import {recents, knowledge, icons, options} from '../../libs/data';
 
 export default function Index(props: NavigationInterface) {
   return (
-    <SafeAreaView style={styles.root}>
+    <SafeAreaView>
       <Header {...props} leftIcon={{name: 'chevron-back'}} />
-      <ScrollView>
-        <HeroSection {...props} />
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        contentContainerStyle={styles.root}>
+        <Text style={styles.subtitle}>Family Plus Investments</Text>
+        <HeroSection />
+        <View style={styles.iconWrap}>
+          {icons.map(list => (
+            <View
+              key={list.text}
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginHorizontal: convertPX(18),
+                backgroundColor: '#ffffff',
+              }}>
+              <TouchableOpacity>
+                <Image source={list.src} style={styles.icon} />
+              </TouchableOpacity>
+              <Text style={styles.iconText}>{list.text}</Text>
+            </View>
+          ))}
+        </View>
+
+        <View style={styles.optionWrap}>
+          {options.map(list => (
+            <View key={list.text} style={styles.optionItem}>
+              <Text style={styles.optionText}>{list.text}</Text>
+              <TouchableOpacity
+                onPress={
+                  list.link.trim() !== ''
+                    ? () => props.navigation.navigate(list.link)
+                    : undefined
+                }
+                style={styles.optionIconWrap}>
+                <Text style={styles.optionIconText}>{list.iconText}</Text>
+                <RenderIcon src="EvilIcons" name="chevron-right" />
+              </TouchableOpacity>
+            </View>
+          ))}
+        </View>
 
         <View style={styles.recentWrap}>
           <Text style={styles.recentTitle}>Recent Transactions</Text>
           {recents.map(list => (
-            <TouchableOpacity
-              key={list.text}
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                paddingHorizontal: '2%',
-                width: convertPX(327),
-              }}>
+            <TouchableOpacity key={list.text} style={styles.recentItem}>
               <View
                 style={{
                   flexDirection: 'row',
                   alignItems: 'center',
                 }}>
-                <Image source={checkedIcon} style={styles.checked} />
+                <Image source={checkedIcon} style={styles.recentIcon} />
                 <View>
                   <Text style={styles.recentText}>{list.text}</Text>
                   <Text style={styles.recentSubText}>{list.subText}</Text>
                 </View>
               </View>
 
-              <Text
-                style={[
-                  styles.text,
-                  {color: '#4B4B4B', fontSize: convertPX(12)},
-                ]}>
+              <Text style={styles.recentAmount}>
                 ${list.amount.toLocaleString()}
               </Text>
             </TouchableOpacity>
           ))}
-          <TouchableOpacity style={styles.button} onPress={() => {}}>
-            <Text style={styles.buttonText}>View all</Text>
+          <TouchableOpacity style={styles.recentBtn} onPress={() => {}}>
+            <Text style={styles.recentBtnText}>View all</Text>
           </TouchableOpacity>
         </View>
 
-        <View style={styles.projection}>
+        <View style={styles.projectionWrap}>
           <Text style={styles.projectionTitle}>
             Hypothetical projection {'\n'} of{' '}
             <Text style={{fontWeight: 'bold'}}>$12000 </Text>at age{' '}
@@ -94,7 +120,7 @@ export default function Index(props: NavigationInterface) {
                 paddingHorizontal: '2%',
                 backgroundColor: '#FBFAFA',
               }}>
-              <Image source={list.icon} style={styles.checked} />
+              <Image source={list.icon} style={styles.recentIcon} />
               <View>
                 <Text style={[styles.text, {marginLeft: convertPX(10)}]}>
                   {list.text}?

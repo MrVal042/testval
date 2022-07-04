@@ -1,23 +1,23 @@
-import {convertPX} from '../../utils';
+import {convertPX, width} from '../../utils';
 import {COLORS} from '../../constants/theme';
 import {StyleSheet} from 'react-native';
 import {widthPercentageToDP as WP} from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
   root: {
-    width: '100%',
-    display: 'flex',
-    height: WP(15),
-    alignItems: 'center',
-    flexDirection: 'row',
-    backgroundColor: COLORS.primary,
+    width: width,
     color: '#000',
-    paddingHorizontal: WP(8),
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: convertPX(40),
+    backgroundColor: COLORS.primary,
     justifyContent: 'space-between',
+    paddingHorizontal: convertPX(20),
   },
   title: {
-    color: COLORS.black,
     fontWeight: '700',
+    color: COLORS.black,
     textAlign: 'center',
     fontFamily: 'Muslin',
     fontSize: convertPX(18),

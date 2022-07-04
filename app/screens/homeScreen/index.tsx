@@ -6,13 +6,7 @@ import coins from '../../assets/images/coins.png';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {NavigationInterface} from '../../../typings/screens';
 import {Image, SafeAreaView, ScrollView, StatusBar} from 'react-native';
-import {widthPercentageToDP as WP} from 'react-native-responsive-screen';
-
 export default function Index(props: NavigationInterface) {
-  const backgroundStyle = {
-    backgroundColor: COLORS.primary,
-    paddingHorizontal: WP(3),
-  };
 
   return (
     <SafeAreaView>
@@ -20,7 +14,6 @@ export default function Index(props: NavigationInterface) {
       <Header {...props} leftIcon={{name: 'close', disabled: true}} />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}
         contentContainerStyle={styles.root}>
         <Image source={coins} style={styles.image} />
         <View>
