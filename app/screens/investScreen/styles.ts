@@ -1,13 +1,12 @@
+import {convertPX} from '../../utils';
 import {StyleSheet} from 'react-native';
-import {COLORS} from '../../constants/theme';
-import {convertPX, height, width} from '../../utils';
+import {COLORS, width} from '../../constants/theme';
 
 const topSize = 60;
 
 export default StyleSheet.create({
   root: {
-    width: width,
-    // minHeight: height,
+    width,
     alignItems: 'center',
     backgroundColor: COLORS.primary,
   },
@@ -20,7 +19,7 @@ export default StyleSheet.create({
     marginVertical: convertPX(5),
   },
 
-  heroWrap: {width: width},
+  heroWrap: {width},
 
   hero: {
     marginTop: 5,
@@ -30,7 +29,6 @@ export default StyleSheet.create({
     borderRadius: convertPX(5),
     backgroundColor: COLORS.purple,
     paddingVertical: convertPX(10),
-    marginVertical: convertPX(10),
   },
   heroBIcon: {
     opacity: 0.9,

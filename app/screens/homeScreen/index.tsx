@@ -1,24 +1,24 @@
 import styles from './styles';
-import React, {useRef} from 'react';
+import * as React from 'react';
 import {splashData} from '../../libs/data';
 import Header from '../../components/Header';
 import {COLORS} from '../../constants/theme';
 import coins from '../../assets/images/coins.png';
 import RenderHero from '../../components/RenderHero';
-import {convertPX, scrollToActiveIndex} from '../../utils';
+import RenderEmpty from '../../components/RenderEmpty';
 import {NavigationInterface} from '../../../typings/screens';
 import RenderIndicator from '../../components/RenderIndicator';
-import {FlatList, Text, TouchableOpacity, View} from 'react-native';
-import {Image, SafeAreaView, ScrollView, StatusBar} from 'react-native';
-import RenderEmpty from '../../components/RenderEmpty';
+import {StatusBar, Animated, Text, Image, View} from 'react-native';
+import {convertPX, scrollToActiveIndex, handleTransform} from '../../utils';
+import {FlatList, SafeAreaView, ScrollView, TouchableOpacity} from 'react-native';
 
-const IMAGE_SIZE = 80;
 const SPACING = 10;
 
 export default function Index(props: NavigationInterface) {
+  const scrollX = React.useRef(new Animated.Value(0)).current;
   const [activeIndex, setActiveIndex] = React.useState(0);
-  const indicatorRef = useRef<FlatList>(null);
-  const heroRef = useRef<FlatList>(null);
+  const indicatorRef = React.useRef<FlatList>(null);
+  const heroRef = React.useRef<FlatList>(null);
 
   const handleScrollToActiveIndex = (index: number) => {
     return scrollToActiveIndex({
@@ -31,13 +31,14 @@ export default function Index(props: NavigationInterface) {
   };
 
   const renderItem = ({item}: {item: ISplashData}) => (
-    <View style={styles.heroWrap}>
+    <Animated.View
+      style={[styles.heroWrap, {transform: handleTransform(scrollX)}]}>
       <Image source={coins} style={styles.image} />
       <View>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.text}>{item.subtitle}</Text>
       </View>
-    </View>
+    </Animated.View>
   );
 
   return splashData.length <= 0 ? (
@@ -52,6 +53,7 @@ export default function Index(props: NavigationInterface) {
         <RenderHero
           data={splashData}
           heroRef={heroRef}
+          scrollX={scrollX}
           renderItem={renderItem}
           activeIndex={activeIndex}
           scrollToActiveIndex={handleScrollToActiveIndex}
@@ -62,6 +64,7 @@ export default function Index(props: NavigationInterface) {
         />
         <RenderIndicator
           data={splashData}
+          scrollX={scrollX}
           inactiveColor="gray"
           activeIndex={activeIndex}
           indicatorRef={indicatorRef}

@@ -1,5 +1,15 @@
 //  COMMONS ////////////////////////////////////
 
+type Point = {
+  x: number;
+  y: number;
+};
+
+type Size = {
+  width: number;
+  height: number;
+};
+
 type IICons = {src: ImageSourcePropType; text: string};
 
 type IOutcome = {text: string; percentage: number; icon: ImageSourcePropType};
@@ -36,6 +46,7 @@ type ISplashData = {id: number; title: string; subtitle: string};
 type IHero = {
   data: any[];
   activeIndex: number;
+  scrollX: Animated.Value;
   heroRef: React.RefObject<FlatList<any>>;
   scrollToActiveIndex: (index: number) => void;
   contentContainerStyle?: StyleProp<ViewStyle>;
@@ -52,6 +63,7 @@ type IIndicator = {
   activeIndex: number;
   activeColor: string;
   inactiveColor: string;
+  scrollX: Animated.Value;
   indicatorStyle?: StyleProp<ViewStyle>;
   indicatorRef: React.RefObject<FlatList<any>>;
   scrollToActiveIndex: (index: number) => void;

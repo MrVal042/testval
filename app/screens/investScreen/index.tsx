@@ -1,22 +1,22 @@
-import React, {useRef} from 'react';
 import styles from './styles';
+import React, {useRef} from 'react';
 import HeroSection from './heroComp';
-import {convertPX, scrollToActiveIndex} from '../../utils';
 import Header from '../../components/Header';
-import {FlatList, Image, ScrollView, Text} from 'react-native';
+import {COLORS} from '../../constants/theme';
+import RenderHero from '../../components/RenderHero';
 import RenderIcon from '../../components/RenderIcon';
+import RenderEmpty from '../../components/RenderEmpty';
 import barChart from '../../assets/images/barChart.png';
 import checkedIcon from '../../assets/icons/checkedIcon.png';
 import {NavigationInterface} from '../../../typings/screens';
+import RenderIndicator from '../../components/RenderIndicator';
 import {SafeAreaView, TouchableOpacity, View} from 'react-native';
 import {recents, knowledge, icons, options} from '../../libs/data';
-import RenderIndicator from '../../components/RenderIndicator';
-import {COLORS} from '../../constants/theme';
-import RenderHero from '../../components/RenderHero';
-import RenderEmpty from '../../components/RenderEmpty';
-
+import {Animated, FlatList, Image, ScrollView, Text} from 'react-native';
+import {convertPX, handleTransform, scrollToActiveIndex} from '../../utils';
 
 export default function Index(props: NavigationInterface) {
+  const scrollX = React.useRef(new Animated.Value(0)).current;
   const [activeIndex, setActiveIndex] = React.useState(0);
   const indicatorRef = useRef<FlatList>(null);
   const heroRef = useRef<FlatList>(null);
@@ -45,8 +45,11 @@ export default function Index(props: NavigationInterface) {
         <RenderHero
           data={data}
           heroRef={heroRef}
+          scrollX={scrollX}
           activeIndex={activeIndex}
-          renderItem={() => <HeroSection />}
+          renderItem={() => (
+            <HeroSection handleTransform={handleTransform(scrollX)} />
+          )}
           scrollToActiveIndex={handleScrollToActiveIndex}
           contentContainerStyle={{
             marginVertical: convertPX(10),
@@ -56,6 +59,7 @@ export default function Index(props: NavigationInterface) {
 
         <RenderIndicator
           data={data}
+          scrollX={scrollX}
           activeIndex={activeIndex}
           indicatorRef={indicatorRef}
           activeColor={COLORS.primary}
