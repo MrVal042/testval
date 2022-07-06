@@ -1,18 +1,64 @@
-import React from 'react';
 import styles from './styles';
-import {convertPX} from '../../utils';
+import React, {useRef} from 'react';
 import {outcome} from '../../libs/data';
 import Header from '../../components/Header';
 import {COLORS} from '../../constants/theme';
 import RenderIcon from '../../components/RenderIcon';
-import {Image, ScrollView, Text} from 'react-native';
+import RenderHero from '../../components/RenderHero';
+import RenderEmpty from '../../components/RenderEmpty';
+import ellipseBg from '../../assets/icons/EllipseBg.png';
 import heroImg from '../../assets/images/circleChart.png';
 import {NavigationInterface} from '../../../typings/screens';
+import {FlatList, Image, ScrollView, Text} from 'react-native';
+import RenderIndicator from '../../components/RenderIndicator';
+import {convertPX, scrollToActiveIndex, width} from '../../utils';
 import {SafeAreaView, TouchableOpacity, View} from 'react-native';
-import ellipseBg from '../../assets/icons/EllipseBg.png';
 
 export default function Index(props: NavigationInterface) {
-  return (
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const indicatorRef = useRef<FlatList>(null);
+  const heroRef = useRef<FlatList>(null);
+  const SPACING = 5;
+
+  const handleScrollToActiveIndex = (index: number) => {
+    return scrollToActiveIndex({
+      index,
+      SPACING,
+      heroRef,
+      indicatorRef,
+      setActiveIndex,
+    });
+  };
+
+  const renderItem = ({item}: any) => (
+    <View style={{alignItems: 'center', width: width}}>
+      <View style={styles.heroWrap}>
+        <Text style={[styles.heroText, {top: 10, right: convertPX(50)}]}>
+          International Company {'\n'} Stocks
+        </Text>
+        <Text style={[styles.heroText, {top: convertPX(65), left: 0}]}>
+          Medium Company {'\n'} stocks (IJH)
+        </Text>
+
+        <Text
+          style={[styles.heroText, {top: convertPX(90), right: convertPX(-5)}]}>
+          Small Company {'\n'} Stocks (IJR)
+        </Text>
+        <Image source={heroImg} style={styles.image} />
+        <Text
+          style={[
+            styles.heroText,
+            {bottom: convertPX(10), left: convertPX(70)},
+          ]}>
+          Large Company {'\n'}Stocks (VOO)
+        </Text>
+      </View>
+    </View>
+  );
+
+  return data.length <= 0 ? (
+    <RenderEmpty />
+  ) : (
     <SafeAreaView>
       <Header
         {...props}
@@ -22,42 +68,31 @@ export default function Index(props: NavigationInterface) {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         contentContainerStyle={styles.root}>
-        <View>
-          <Text style={styles.subtitle}>Aggressive Portfolio</Text>
-
-          <View style={styles.dotWrap}>
-            <View style={styles.dot}></View>
-            <View style={styles.dot}></View>
-            <View style={styles.dot}></View>
-            <View style={[styles.dot, {backgroundColor: COLORS.blue}]}></View>
-            <View style={styles.dot}></View>
-          </View>
-
-          <View style={styles.heroWrap}>
-            <Text style={[styles.heroText, {top: 10, right: convertPX(50)}]}>
-              International Company {'\n'} Stocks
-            </Text>
-            <Text style={[styles.heroText, {top: convertPX(65), left: 0}]}>
-              Medium Company {'\n'} stocks (IJH)
-            </Text>
-
-            <Text
-              style={[
-                styles.heroText,
-                {top: convertPX(90), right: convertPX(-5)},
-              ]}>
-              Small Company {'\n'} Stocks (IJR)
-            </Text>
-            <Image source={heroImg} style={styles.image} />
-            <Text
-              style={[
-                styles.heroText,
-                {bottom: convertPX(10), left: convertPX(70)},
-              ]}>
-              Large Company {'\n'}Stocks (VOO)
-            </Text>
-          </View>
-        </View>
+        <Text style={styles.subtitle}>Aggressive Portfolio</Text>
+        <RenderIndicator
+          data={data}
+          activeIndex={activeIndex}
+          activeColor={COLORS.blue}
+          indicatorRef={indicatorRef}
+          indicatorStyle={styles.dot}
+          inactiveColor={COLORS.primary}
+          scrollToActiveIndex={handleScrollToActiveIndex}
+          contentContainerStyle={{
+            marginVertical: convertPX(10),
+            paddingHorizontal: SPACING,
+          }}
+        />
+        <RenderHero
+          data={data}
+          heroRef={heroRef}
+          renderItem={renderItem}
+          activeIndex={activeIndex}
+          scrollToActiveIndex={handleScrollToActiveIndex}
+          contentContainerStyle={{
+            marginVertical: convertPX(10),
+            paddingHorizontal: SPACING,
+          }}
+        />
 
         <View style={styles.outcomeWrap}>
           <View style={styles.outcomeTitleWrap}>
@@ -98,3 +133,5 @@ export default function Index(props: NavigationInterface) {
     </SafeAreaView>
   );
 }
+
+const data = [{id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}];
