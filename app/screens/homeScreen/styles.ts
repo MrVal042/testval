@@ -5,15 +5,16 @@ import {COLORS} from '../../constants/theme';
 export default StyleSheet.create({
   root: {
     width: width,
-    minHeight: height,
     alignItems: 'center',
     backgroundColor: COLORS.primary,
   },
 
+  heroWrap: {width: width, alignItems: 'center'},
+
   image: {
     width: convertPX(238),
     height: convertPX(238),
-    marginTop: convertPX(30),
+    marginHorizontal: convertPX(10),
   },
   title: {
     color: '#000',
@@ -50,6 +51,7 @@ export default StyleSheet.create({
     width: convertPX(327),
     height: convertPX(50),
     color: COLORS.primary,
+    marginTop: convertPX(20),
     justifyContent: 'center',
     borderRadius: convertPX(6),
     backgroundColor: COLORS.purple,

@@ -30,3 +30,38 @@ type IconProps = {
   color?: number | ColorValue | undefined;
   onPress?: ((event: GestureResponderEvent) => void) | undefined;
 };
+
+type ISplashData = {id: number; title: string; subtitle: string};
+
+type IHero = {
+  data: any[];
+  activeIndex: number;
+  heroRef: React.RefObject<FlatList<any>>;
+  scrollToActiveIndex: (index: number) => void;
+  contentContainerStyle?: StyleProp<ViewStyle>;
+  renderItem: ListRenderItem<any> | null | undefined;
+  ListEmptyComponent?:
+    | React.ComponentType<any>
+    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+    | null
+    | undefined;
+};
+
+type IIndicator = {
+  data: any[];
+  activeIndex: number;
+  activeColor: string;
+  inactiveColor: string;
+  indicatorStyle?: StyleProp<ViewStyle>;
+  indicatorRef: React.RefObject<FlatList<any>>;
+  scrollToActiveIndex: (index: number) => void;
+  contentContainerStyle?: StyleProp<ViewStyle>;
+};
+
+type IScroll = {
+  index: number;
+  SPACING: number;
+  heroRef: React.RefObject<FlatList<any>>;
+  indicatorRef: React.RefObject<FlatList<any>>;
+  setActiveIndex: (value: React.SetStateAction<number>) => void;
+};

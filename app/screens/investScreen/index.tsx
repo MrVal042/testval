@@ -1,30 +1,75 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import styles from './styles';
 import HeroSection from './heroComp';
-import {convertPX} from '../../utils';
+import {convertPX, scrollToActiveIndex} from '../../utils';
 import Header from '../../components/Header';
-import {Image, ScrollView, Text} from 'react-native';
+import {FlatList, Image, ScrollView, Text} from 'react-native';
 import RenderIcon from '../../components/RenderIcon';
 import barChart from '../../assets/images/barChart.png';
 import checkedIcon from '../../assets/icons/checkedIcon.png';
 import {NavigationInterface} from '../../../typings/screens';
 import {SafeAreaView, TouchableOpacity, View} from 'react-native';
 import {recents, knowledge, icons, options} from '../../libs/data';
+import RenderIndicator from '../../components/RenderIndicator';
+import {COLORS} from '../../constants/theme';
+import RenderHero from '../../components/RenderHero';
+import RenderEmpty from '../../components/RenderEmpty';
+
 
 export default function Index(props: NavigationInterface) {
-  return (
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const indicatorRef = useRef<FlatList>(null);
+  const heroRef = useRef<FlatList>(null);
+  const SPACING = 22;
+
+  const handleScrollToActiveIndex = (index: number) => {
+    return scrollToActiveIndex({
+      index,
+      SPACING,
+      heroRef,
+      indicatorRef,
+      setActiveIndex,
+    });
+  };
+
+  return data.length <= 0 ? (
+    <RenderEmpty />
+  ) : (
     <SafeAreaView>
       <Header {...props} leftIcon={{name: 'chevron-back'}} />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         contentContainerStyle={styles.root}>
         <Text style={styles.subtitle}>Family Plus Investments</Text>
-        <HeroSection />
+
+        <RenderHero
+          data={data}
+          heroRef={heroRef}
+          activeIndex={activeIndex}
+          renderItem={() => <HeroSection />}
+          scrollToActiveIndex={handleScrollToActiveIndex}
+          contentContainerStyle={{
+            marginVertical: convertPX(10),
+            paddingHorizontal: SPACING,
+          }}
+        />
+
+        <RenderIndicator
+          data={data}
+          activeIndex={activeIndex}
+          indicatorRef={indicatorRef}
+          activeColor={COLORS.primary}
+          indicatorStyle={styles.dot}
+          inactiveColor={COLORS.purple}
+          scrollToActiveIndex={handleScrollToActiveIndex}
+          contentContainerStyle={{
+            paddingHorizontal: SPACING,
+            marginVertical: convertPX(10),
+          }}
+        />
         <View style={styles.iconWrap}>
           {icons.map(list => (
-            <View
-              key={list.text}
-              style={styles.iconItem}>
+            <View key={list.text} style={styles.iconItem}>
               <TouchableOpacity>
                 <Image source={list.src} style={styles.icon} />
               </TouchableOpacity>
@@ -128,3 +173,5 @@ export default function Index(props: NavigationInterface) {
     </SafeAreaView>
   );
 }
+
+const data = [{id: 1}, {id: 2}, {id: 3}, {id: 4}];

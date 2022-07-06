@@ -7,7 +7,7 @@ const topSize = 60;
 export default StyleSheet.create({
   root: {
     width: width,
-    minHeight: height,
+    // minHeight: height,
     alignItems: 'center',
     backgroundColor: COLORS.primary,
   },
@@ -20,7 +20,9 @@ export default StyleSheet.create({
     marginVertical: convertPX(5),
   },
 
-  heroWrap: {
+  heroWrap: {width: width},
+
+  hero: {
     marginTop: 5,
     alignItems: 'center',
     width: convertPX(326),

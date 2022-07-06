@@ -49,3 +49,21 @@ export const outcome: Array<IOutcome> = [
     icon: ellipse1,
   },
 ];
+
+export const splashData: Array<ISplashData> = [
+  {
+    id: 1,
+    title: `3KLE invests your money \n intelligently in stocks`,
+    subtitle: `Build, perserve and manage your \n family wealth with stocks investment `,
+  },
+  {
+    id: 2,
+    title: `Invests your money today \n Get stocks bonus`,
+    subtitle: `Build, perserve and manage your \n family wealth with stocks investment `,
+  },
+  {
+    id: 3,
+    title: `3KLE invests your money \n intelligently in stocks`,
+    subtitle: `Build, perserve and manage your \n family wealth with stocks investment `,
+  },
+];
