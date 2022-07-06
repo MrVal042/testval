@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { convertPX } from '../utils';
+import React from 'react';
+import {convertPX} from '../utils';
+import {StyleSheet, Text, View} from 'react-native';
 
 export default function RenderEmpty() {
   return (

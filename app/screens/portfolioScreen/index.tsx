@@ -2,19 +2,20 @@ import styles from './styles';
 import React, {useRef} from 'react';
 import {outcome} from '../../libs/data';
 import Header from '../../components/Header';
-import {COLORS} from '../../constants/theme';
+import {COLORS, width} from '../../constants/theme';
 import RenderIcon from '../../components/RenderIcon';
 import RenderHero from '../../components/RenderHero';
 import RenderEmpty from '../../components/RenderEmpty';
 import ellipseBg from '../../assets/icons/EllipseBg.png';
 import heroImg from '../../assets/images/circleChart.png';
 import {NavigationInterface} from '../../../typings/screens';
-import {FlatList, Image, ScrollView, Text} from 'react-native';
 import RenderIndicator from '../../components/RenderIndicator';
-import {convertPX, scrollToActiveIndex, width} from '../../utils';
 import {SafeAreaView, TouchableOpacity, View} from 'react-native';
+import {Animated, FlatList, Image, ScrollView, Text} from 'react-native';
+import {convertPX, scrollToActiveIndex, handleTransform} from '../../utils';
 
 export default function Index(props: NavigationInterface) {
+  const scrollX = React.useRef(new Animated.Value(0)).current;
   const [activeIndex, setActiveIndex] = React.useState(0);
   const indicatorRef = useRef<FlatList>(null);
   const heroRef = useRef<FlatList>(null);
@@ -31,7 +32,12 @@ export default function Index(props: NavigationInterface) {
   };
 
   const renderItem = ({item}: any) => (
-    <View style={{alignItems: 'center', width: width}}>
+    <Animated.View
+      style={{
+        width,
+        alignItems: 'center',
+        transform: handleTransform(scrollX),
+      }}>
       <View style={styles.heroWrap}>
         <Text style={[styles.heroText, {top: 10, right: convertPX(50)}]}>
           International Company {'\n'} Stocks
@@ -53,7 +59,7 @@ export default function Index(props: NavigationInterface) {
           Large Company {'\n'}Stocks (VOO)
         </Text>
       </View>
-    </View>
+    </Animated.View>
   );
 
   return data.length <= 0 ? (
@@ -71,6 +77,7 @@ export default function Index(props: NavigationInterface) {
         <Text style={styles.subtitle}>Aggressive Portfolio</Text>
         <RenderIndicator
           data={data}
+          scrollX={scrollX}
           activeIndex={activeIndex}
           activeColor={COLORS.blue}
           indicatorRef={indicatorRef}
@@ -85,6 +92,7 @@ export default function Index(props: NavigationInterface) {
         <RenderHero
           data={data}
           heroRef={heroRef}
+          scrollX={scrollX}
           renderItem={renderItem}
           activeIndex={activeIndex}
           scrollToActiveIndex={handleScrollToActiveIndex}

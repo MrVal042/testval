@@ -5889,6 +5889,11 @@ react-is@^16.13.0, react-is@^16.13.1, react-is@^16.7.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-native-animated-flatlist@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-animated-flatlist/-/react-native-animated-flatlist-0.0.3.tgz#7712d37f7dd8f9d70b389595ca532fe502e0e956"
+  integrity sha512-1CL7HUKfV1FXmYyQp2/nApOrksJ/zfN7ENW/y0LUKPjf6bKtmpYmS0DXiJ0PqIW9ai+D6+PdK86Id/T6NKfSJg==
+
 react-native-circular-progress-indicator@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/react-native-circular-progress-indicator/-/react-native-circular-progress-indicator-4.2.0.tgz#db4cbedfac3273298e6cf2e2f22dc1deb97895a5"
@@ -5919,6 +5924,11 @@ react-native-gradle-plugin@^0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/react-native-gradle-plugin/-/react-native-gradle-plugin-0.0.7.tgz#96602f909745239deab7b589443f14fce5da2056"
   integrity sha512-+4JpbIx42zGTONhBTIXSyfyHICHC29VTvhkkoUOJAh/XHPEixpuBduYgf6Y4y9wsN1ARlQhBBoptTvXvAFQf5g==
+
+react-native-reanimated-carousel@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-reanimated-carousel/-/react-native-reanimated-carousel-3.0.3.tgz#b19b3909fa2ed7c35716fd7f1d2f4aff91345db3"
+  integrity sha512-KdidXIBNQb4F/JmXn4tV+2yr/6BhYUQCii0QwBtv64QYiYiBIn+3K8yKJpLTOoy7e3dB3HFKD69VwCCw8ujd2w==
 
 react-native-reanimated@^2.9.1:
   version "2.9.1"

@@ -1,6 +1,5 @@
-import {Dimensions} from 'react-native';
-
-export const {height, width} = Dimensions.get('window');
+import {Animated} from 'react-native';
+import {height, width} from '../constants/theme';
 
 export const convertPX = (value: number) => {
   return (width * ((value * 100) / 375)) / 100;
@@ -28,4 +27,20 @@ export const scrollToActiveIndex = (props: IScroll) => {
       animated: true,
     });
   }
+};
+
+export const handleTransform = (scrollX: Animated.Value) => {
+  const YOLO = Animated.modulo(
+    Animated.divide(Animated.modulo(scrollX, width), new Animated.Value(width)),
+    1,
+  );
+  const rotate = YOLO.interpolate({
+    inputRange: [0, 0.5, 1],
+    outputRange: ['0deg', '35deg', '0deg'],
+  });
+  const translateX = YOLO.interpolate({
+    inputRange: [0, 0.5, 1],
+    outputRange: [0, -height, 0],
+  });
+  return [{rotate}, {translateX}];
 };

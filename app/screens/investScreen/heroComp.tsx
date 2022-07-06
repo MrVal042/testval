@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './styles';
 import {convertPX} from '../../utils';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, Animated} from 'react-native';
 
-export default function hero() {
+export default function hero(props: any) {
   return (
-    <View style={styles.heroWrap}>
+    <Animated.View style={[styles.heroWrap, {transform: props.handleTransform}]}>
       <View style={styles.hero}>
         <View
           style={[
@@ -64,6 +64,6 @@ export default function hero() {
           />
         </View>
       </View>
-    </View>
+    </Animated.View>
   );
 }

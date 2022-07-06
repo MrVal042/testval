@@ -1,25 +1,26 @@
 import React from 'react';
-import {width} from '../utils';
-import {FlatList} from 'react-native';
+import {Animated} from 'react-native';
 
 export default function RenderHero(props: IHero) {
   return (
-    <FlatList
+    <Animated.FlatList
       horizontal
       pagingEnabled
       bounces={false}
       data={props.data}
       ref={props.heroRef}
+      scrollEventThrottle={32}
       renderItem={props.renderItem}
       showsHorizontalScrollIndicator={false}
       keyExtractor={item => item.id.toString()}
-      contentContainerStyle={props.contentContainerStyle}
       ListEmptyComponent={props.ListEmptyComponent}
-      onMomentumScrollEnd={ev => {
-        props.scrollToActiveIndex(
-          Math.round(ev.nativeEvent.contentOffset.x / width),
-        );
-      }}
+      contentContainerStyle={props.contentContainerStyle}
+      onScroll={Animated.event(
+        [{nativeEvent: {contentOffset: {x: props.scrollX}}}],
+        {
+          useNativeDriver: false,
+        },
+      )}
     />
   );
 }

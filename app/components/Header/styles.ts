@@ -1,10 +1,10 @@
-import {convertPX, width} from '../../utils';
-import {COLORS} from '../../constants/theme';
+import {convertPX} from '../../utils';
 import {StyleSheet} from 'react-native';
+import {COLORS, width} from '../../constants/theme';
 
 export default StyleSheet.create({
   root: {
-    width: width,
+    width,
     color: '#000',
     display: 'flex',
     flexDirection: 'row',

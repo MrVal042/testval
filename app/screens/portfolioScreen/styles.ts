@@ -1,6 +1,6 @@
+import {convertPX} from '../../utils';
 import {StyleSheet} from 'react-native';
-import {COLORS} from '../../constants/theme';
-import {convertPX, height, width} from '../../utils';
+import {COLORS, height, width} from '../../constants/theme';
 
 export default StyleSheet.create({
   root: {

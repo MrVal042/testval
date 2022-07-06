@@ -1,11 +1,12 @@
+import {convertPX} from '../../utils';
 import {StyleSheet} from 'react-native';
-import {convertPX, height, width} from '../../utils';
-import {COLORS} from '../../constants/theme';
+import {COLORS, width} from '../../constants/theme';
 
 export default StyleSheet.create({
   root: {
     width: width,
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: COLORS.primary,
   },
 
@@ -57,4 +58,5 @@ export default StyleSheet.create({
     backgroundColor: COLORS.purple,
   },
   buttonText: {color: COLORS.primary, fontSize: convertPX(16)},
+
 });
